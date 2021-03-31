@@ -1,77 +1,62 @@
 /*
-290. Word Pattern
+1518. Water Bottles
 Easy
-Given a pattern and a string s, find if s follows the same pattern.
 
-Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s.
+Given numBottles full water bottles, you can exchange numExchange empty water bottles for one full water bottle.
+
+The operation of drinking a full water bottle turns it into an empty bottle.
+
+Return the maximum number of water bottles you can drink.
+
+ 
 
 Example 1:
 
-Input: pattern = "abba", s = "dog cat cat dog"
-Output: true
+
+
+Input: numBottles = 9, numExchange = 3
+Output: 13
+Explanation: You can exchange 3 empty bottles to get 1 full water bottle.
+Number of water bottles you can drink: 9 + 3 + 1 = 13.
 Example 2:
 
-Input: pattern = "abba", s = "dog cat cat fish"
-Output: false
+
+
+Input: numBottles = 15, numExchange = 4
+Output: 19
+Explanation: You can exchange 4 empty bottles to get 1 full water bottle. 
+Number of water bottles you can drink: 15 + 3 + 1 = 19.
 Example 3:
 
-Input: pattern = "aaaa", s = "dog cat cat dog"
-Output: false
+Input: numBottles = 5, numExchange = 5
+Output: 6
 Example 4:
 
-Input: pattern = "abba", s = "dog dog dog dog"
-Output: false
+Input: numBottles = 2, numExchange = 3
+Output: 2
 */
 
-
-{
-    function wordPattern(pattern, s) {
-        // create 2 maps for 
-        let d1 = new Map;
-        let d2 = new Map;
-
-        let words = s.split(" ");
+/**
+ * @param {number} numBottles
+ * @param {number} numExchange
+ * @return {number}
+ */
+ var numWaterBottles = function(numBottles, numExchange) {
+    let fullBottleCount = numBottles;
+    let emptyBottleCount = 0;
+    let result = 0;
+    
+    while (fullBottleCount > 0){
+        // drink water
+        result += fullBottleCount;
         
-        if(words.length !== pattern.length){
-            return False;
-        }
-        for(var i=0; i<words.length; i++){
-            // this is to fill the map
-            if(!d1.has(words[i]) && !d2.has(pattern[i])){
-                d1.set(words[i], pattern[i]);
-                d2.set(pattern[i], pattern[i]);
-            }
-            // check if map does not matche pattern
-            else if(d1.get(words[i]) !== pattern[i]){
-                return false;    
-            }
-        }
-        // if you get here pattern matches
-        return true;
-    }    
-    
-    // Example 1:
-    pattern = "abba";
-    s = "dog cat cat dog";
-    console.log(wordPattern(pattern, s));
-    // Output: true
-    
-    // Example 2:
-    pattern = "abba";
-    s = "dog cat cat fish";
-    console.log(wordPattern(pattern, s));
-    // Output: false
-
-    // Example 3:
-    pattern = "aaaa";
-    s = "dog cat cat dog";
-    console.log(wordPattern(pattern, s));
-    // Output: false
-
-    // Example 4:
-    pattern = "abba";
-    s = "dog dog dog dog";
-    console.log(wordPattern(pattern, s));
-    // Output: false
-
-}
+        // fullBottle => emptyBottles
+        emptyBottleCount += fullBottleCount;
+        
+        // next 1 for numExchange
+        fullBottleCount = Math.floor(emptyBottleCount/numExchange);
+        
+        emptyBottleCount %= numExchange; 
+    }
+    return result;
+};
