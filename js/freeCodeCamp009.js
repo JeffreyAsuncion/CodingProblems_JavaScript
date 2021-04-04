@@ -19,15 +19,18 @@
 */
 
 function truncateString(str, num){
+    if (num > str.length) return str;
     if (str.length <= 3) return str + "...";
 
     if (str.length > num) {
-        return str.substr(str.length-3-num) + "..."
+        return str.substr(0, num-3) + "..."
     }
     return str
 }
 
-console.log(truncateString("alskdfhjl ashdfklas", 7));
+console.log(truncateString("Jeffrey Asuncion", 7));
 console.log(truncateString("asdfhashdfjklaskljdfhkjasdh",5));
 console.log(truncateString("asdfkhkasdhklfjhasd", 11));
 console.log(truncateString("asdfhgkasdhfj", 4));
+console.log(truncateString("a", 4));
+console.log(truncateString("a", 20));
