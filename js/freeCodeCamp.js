@@ -1,33 +1,21 @@
 /*
     FreeCodeCamp
-    JavaScript Coding Challenge #9: Truncate a string
+    JavaScript Coding Challenge #10: Chunky Monkey 
 
-    Truncate a string `str` 
-    if it is longer than the given maximum string length `num`
-
-    return the truncated string with a ... ending.
-
-    Note that inserting 
-    the three dots to the end will add to the string length
-
-    However, if the given maximum string length 
-    `num` is less than or equal to 3, 
-    then the adition of the three dots does not add
-    to the string length in determining the truncated string.
-
+    Write a function that splits an array `arr` into
+    groups the length fo size `num` and returns them
+    as a two-dimensional array
 
 */
 
-function truncateString(str, num){
-    if (str.length <= 3) return str + "...";
-
-    if (str.length > num) {
-        return str.substr(str.length-3-num) + "..."
-    }
-    return str
+function chunkArrayInGroups(arr, num){
+    let a = arr; //.slice(0,num);
+    // let b = arr.slice(num);
+    return a;
 }
 
-console.log(truncateString("alskdfhjl ashdfklas", 7));
-console.log(truncateString("asdfhashdfjklaskljdfhkjasdh",5));
-console.log(truncateString("asdfkhkasdhklfjhasd", 11));
-console.log(truncateString("asdfhgkasdhfj", 4));
+// console.log(chunkArrayInGroups([1,2,3,4], 2));
+console.log(chunkArrayInGroups(["a","b","c","d"], 3));
+// console.log(chunkArrayInGroups(arr, num));
+// console.log(chunkArrayInGroups(arr, num));
+// console.log(chunkArrayInGroups(arr, num));
