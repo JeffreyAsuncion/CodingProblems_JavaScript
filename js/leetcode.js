@@ -1,34 +1,21 @@
 /*
     FreeCodeCamp
-    JavaScript Coding Challenge #4: Find the Longest Word in a String
-
+    JavaScript Coding Challenge #5: Title Case a Sentence
     
+    Return the provided string with the first letter of each
+    word capitalized. Make sure the rest of the word is in lower case.
+
+    For the purpose of this exercise, you should also capitalize connecting
+    words like "the" and "of"
 */
 
-{
+function titleCase(str){
+    str.toLowerCase()
 
-    function findLongestWord(str){
-        let long = 0;
-        word = str.split(" ");
-        let results = [];
-
-        console.log(word);
-        
-        for(let i=0; i<word.length; i++){
-            if(word[i].length > long){
-                long = word[i].length;
-            }
-        }
-
-        for(let i=0; i<word.length; i++){
-            if(word[i].length === long){
-                results.push(word[i])
-            }
-        }
-        return results;
-    }
-
-    console.log(findLongestWord("The quick brown fox jumped over the lazy dog."));
-    // console.log(findLongestWord(str));
-    // console.log(findLongestWord(str));
+    
+    return 100;
 }
+
+console.log(titleCase("I'm a little tea pot"));
+
+
